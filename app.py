@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 from pycaret.regression import *
 import streamlit as st
 
@@ -30,29 +31,17 @@ def fazer_previsao(input1, input2):
     label_column = prediction.columns[-1]  # Pegar o nome da última coluna (pode variar de acordo com a versão do PyCaret)
     return prediction[label_column].iloc[0]
 
-# Configurar o estilo da página
-st.set_page_config(page_title="Previsão de Cadastro em Imóveis", layout="centered")
-
 # Título do webapp
-st.title("Previsão de Cadastro em Imóveis")
+st.title("Previsão de cadastro em imóveis")
 
 # Descrição do webapp
 st.write("Insira os dados necessários para fazer a previsão.")
 
-# Layout em duas colunas
-col1, col2 = st.columns(2)
-
-# Campo de entrada para Código IBGE
-with col1:
-    input1 = st.number_input("Código IBGE")
-
-# Campo de entrada para Área Cadastrada
-with col2:
-    input2 = st.number_input("Área Cadastrada")
+# Campos de entrada
+input1 = st.number_input("Código IBGE")
+input2 = st.number_input("Área Cadastrada")
 
 # Botão de predição
 if st.button("Fazer Previsão"):
     prediction = fazer_previsao(input1, input2)
-    prediction_rounded = round(prediction, 2)  # Arredonda para 2 casas decimais
-    st.success("Previsão: {}".format(prediction_rounded))
-
+    st.success("Previsão: {}".format(prediction))
