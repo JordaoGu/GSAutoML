@@ -32,7 +32,7 @@ def fazer_previsao(input1, input2):
     return prediction[label_column].iloc[0]
 
 # Título do webapp
-st.title("Webapp de Previsão para número de cadastro em imóveis")
+st.title("Previsão de cadastro em imóveis")
 
 # Descrição do webapp
 st.write("Insira os dados necessários para fazer a previsão.")
